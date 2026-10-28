@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Page background: #F5F5F7, never pure white */
+    --background: 240 10% 96.5%;
+    /* Headings / primary ink text: #1E1B33 */
+    --foreground: 248 31% 15%;
+    
+    /* Pure white cards on the light neutral background */
+    --card: 0 0% 100%;
+    --card-foreground: 248 31% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 248 31% 15%;
+    
+    /* Primary buttons / dark cards: #2A2545 */
+    --primary: 249 30% 21%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Soft lavender surface: #EBEAF8 */
+    --secondary: 245 45% 95%;
+    --secondary-foreground: 249 30% 21%;
+    
+    /* Muted text: #6B6880 */
+    --muted: 240 15% 95%;
+    --muted-foreground: 248 10% 45%;
+    
+    /* Accent violet: #6B5BD2 / #E8E6F8 */
+    --accent: 246 45% 94%;
+    --accent-foreground: 249 30% 21%;
+    
+    /* Soft destructive: #C75D6B */
+    --destructive: 352 49% 57%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Hairline borders: #E3E2EC */
+    --border: 246 18% 91%;
+    --input: 246 18% 91%;
+    
+    /* Focus ring: #6B5BD2 */
+    --ring: 248 58% 59%;
+    
+    /* Large radius base (1rem / 16px) */
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #F5F5F7;
+    color: #1E1B33;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-normal text-ink-dark;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Lavender hero gradient from reference */
+  .lavender-hero-gradient {
+    background: linear-gradient(180deg, #E4E3F5 0%, #D2D0F0 40%, #B8B6E8 100%);
+  }
+
+  /* Soft card lavender gradient */
+  .lavender-card-gradient {
+    background: linear-gradient(135deg, #EBEAF8 0%, #DFDEF5 60%, #D0CEEE 100%);
+  }
+
+  /* Dark navy card from reference */
+  .dark-navy-card {
+    background-color: #2A2545;
+    color: #FFFFFF;
+  }
+
+  /* Lavender shimmer for loading skeletons */
+  .shimmer-lavender {
+    background: linear-gradient(
+      90deg,
+      rgba(235, 234, 248, 0.6) 0%,
+      rgba(201, 199, 238, 0.9) 50%,
+      rgba(235, 234, 248, 0.6) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.2s infinite linear;
+  }
+}
+
+/* Success petal / sparkle burst animation */
+@keyframes sparkle-burst {
+  0% {
+    transform: scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-sparkle-burst {
+  animation: sparkle-burst 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessible Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
